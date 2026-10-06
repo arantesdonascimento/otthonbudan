@@ -1,0 +1,100 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{%  block title %}Kapcsolat | {% endblock %}
+
+{% block content %}
+<div class="hero-wrap" style="background-image: url('static/images/pano3.jpg');">
+    <div class="overlay"></div>
+    <div class="container">
+      <div class="row no-gutters slider-text align-items-center justify-content-center">
+        <div class="col-md-9 ftco-animate text-center">
+          <p class="breadcrumbs"><span class="mr-2"><a href="{% static 'index' %}">Kezdőlap</a></span> <span>Elérhetőség</span></p>
+          <h1 class="mb-3 bread">Keressen minket...</h1>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!--<section class="ftco-section contact-section bg-light">-->
+    <section class="ftco-section contact-section" style="background-color: #d1b28c;">
+    <div class="container">
+      <div class="row d-flex mb-5 contact-info">
+        <div class="col-md-12 mb-4">
+          <h2 class="h3">Kapcsolattartás</h2>
+        </div>
+        <div class="w-100"></div>
+        <div class="col-md-3 d-flex">
+            <div class="info bg-white p-4">
+              <p><span>Cím:</span><br> 1117, Budapest, Magyarország</p>
+            </div>
+        </div>
+        <div class="col-md-3 d-flex">
+            <div class="info bg-white p-4">
+              <p><span>Telefon:</span><br> <a href="#">+ 36 30 1234567</a></p>
+            </div>
+        </div>
+        <div class="col-md-3 d-flex">
+            <div class="info bg-white p-4">
+              <p><span>Email:</span><br> <a href="major.edit@otthonbudan.hu">major.edit@otthonbudan.hu</a></p>
+            </div>
+        </div>
+        <div class="col-md-3 d-flex">
+            <div class="info bg-white p-4">
+              <p><span>Webhely: </span><br> <a href="#">https://otthonbudan.hu/</a></p>
+            </div>
+        </div>
+      </div>
+      <div class="row block-9">
+        <div class="col-md-6 order-md-last d-flex">
+          <form action="#" class="bg-white p-5 contact-form">
+            <div class="form-group">
+              <input type="text" class="form-control" placeholder="Név">
+            </div>
+            <div class="form-group">
+              <input type="text" class="form-control" placeholder="Email">
+            </div>
+            <div class="form-group">
+              <input type="text" class="form-control" placeholder="Tárgy">
+            </div>
+            <div class="form-group">
+              <textarea name="" id="" cols="30" rows="7" class="form-control" placeholder="Üzenet"></textarea>
+            </div>
+            <div class="form-group">
+              <input type="submit" value="Elküldés" class="btn btn-primary py-3 px-5">
+            </div>
+          </form>
+        </div>
+
+        <div class="col-md-6 d-flex">
+            <div id="map" class="bg-white"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+      
+  <section class="ftco-section-parallax">
+    <div class="parallax-img d-flex align-items-center">
+      <div class="container">
+        <div class="row d-flex justify-content-center">
+          <div class="col-md-7 text-center heading-section heading-section-white ftco-animate">
+            <h2>Subcribe to our Newsletter</h2>
+            <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in</p>
+            <div class="row d-flex justify-content-center mt-5">
+              <div class="col-md-8">
+                <form action="#" class="subscribe-form">
+                  <div class="form-group d-flex">
+                    <input type="text" class="form-control" placeholder="Enter email address">
+                    <input type="submit" value="Subscribe" class="submit px-3">
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+{% endblock %}

@@ -1,0 +1,8 @@
+django==2.2
+django-tinymce
+django-autoslug
+pillow
+
+
+
+

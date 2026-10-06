@@ -1,0 +1,516 @@
+{% extends 'base.html' %}
+
+{% load static %}
+{% load humanize %}
+
+{%  block title %}{% endblock %}
+
+{% block content %}
+
+
+<section class="home-slider owl-carousel">
+  {% if mvp_listings %}
+      {% for listing in mvp_listings %}
+          <div class="slider-item" style="background-image: url('{{ listing.photo_main.url }}');">
+              <div class="overlay"></div>
+              <div class="container">
+                  <div class="row no-gutters slider-text align-items-md-end align-items-center justify-content-end">
+                      <div class="col-md-6 text p-4 ftco-animate">
+                          <a href="{% url 'listing' listing.slug %}">
+                            <h1 class="mb-3">
+                              {{ listing.title }}
+                            </h1>
+                          </a>
+                          <span class="location d-block mb-3">
+                            <i class="icon-my_location"></i>
+                            {{ listing.town }},
+                            {{ listing.address }},
+                            {{ listing.county }}
+                            {{ listing.zipcode }}
+                          </span>
+                          <!--<p>{{ listing.description }}</p>-->
+                          <span class="price">
+                            <!--Irányár: {{ listing.price | intword | intcomma }}-->
+                            Irányár: {{ listing.price | intcomma }} Ft
+                          </span>
+                          <!--<a href="{% url 'listing' listing.slug %}" class="btn-custom p-3 px-4 bg-primary">
+                            Részletek
+                            <span class="icon-plus ml-1"></span>
+                          </a>-->
+                      </div>
+                  </div>
+              </div>
+          </div>
+      {% endfor %}
+  {% else %}
+      <div class="col-md-12">
+        <p>No Listings Available</p>
+      </div>
+  {% endif %}
+</section>
+
+    <!-- Searchbar -->
+    {% include 'partials/_search.html' %}
+
+
+    <!--<section class="ftco-section bg-light">-->
+    <section class="ftco-section" style="background-color: #d1b28c;">
+        <div class="row justify-content-center mb-5 pb-3">
+          <div class="col-md-7 heading-section text-center ftco-animate">
+            <h2 class="mb-4">Szolgáltatásaink</h2>
+          </div>
+          <h5>
+            <b>Közel 20 éves tapasztalattal végzünk ingatlanközvetítési szolgáltatást Budapesten és környékén.</b>
+          </h5>
+        </div>
+
+        <div class="container">
+          <div class="row d-flex">
+            <!--
+            <div class="col-md-3 d-flex align-self-stretch ftco-animate">
+              <div class="media block-6 services py-4 d-block text-center">
+                <div class="d-flex justify-content-center"><div class="icon"><span class="flaticon-pin"></span></div></div>
+                <div class="media-body p-2 mt-2">
+                  <h3 class="heading mb-3">Find Property Anywhere in Kenya</h3>
+                  <p>House hunting just got easy. We do the treking for you and bring you property to your convinience</p>
+                </div>
+              </div>
+            </div>
+            -->
+
+            <div class="col-md-4 d-flex align-self-stretch ftco-animate">
+              <div class="media block-6 services py-4 d-block text-center">
+                <div class="d-flex justify-content-center"><div class="icon"><span class="flaticon-detective"></span></div></div>
+                <div class="media-body p-2 mt-2">
+                  <h3 class="heading mb-3">Hitelügyintézés</h3>
+                  <p>
+                    Ha fontos Önnek a kiszámíthatóság és az alacsony költségek, válassza kamatperiódus mentes hiteleinket állami támogatással!
+                  </p>
+                  <p>
+                    Ne járjon bankról bankra! Mi kiválasztjuk a legkedvezőbb ajánlatot és levesszük vállairól az ügyintézés terheit.
+                  </p>
+                  <p>
+                    Személyre szabott ajánlatért kérjen időpontot kollégáinktól!
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4 d-flex align-sel Searchf-stretch ftco-animate">
+              <div class="media block-6 services py-4 d-block text-center">
+                <div class="d-flex justify-content-center"><div class="icon"><span class="flaticon-house"></span></div></div>
+                <div class="media-body p-2 mt-2">
+                  <h3 class="heading mb-3">Ingatlanközvetítés</h3>
+                  <p>
+                    Lakások, családi házak, telkek eladása és bérbeadása.
+                  </p>
+                  <p>
+                    <b>Megbízási díjunk:</b>
+                  </p>
+                    <ul>
+                      <li>eladásnál a vételár 2,5-3 % + áfa</li>
+                      <li>bérbeadásnál 1 havi bérleti díj + áfa</li>
+                    </ul>
+                  <p>
+                    Egyedi eseteknél külön megállapodás alapján végezzük szolgáltatásainkat.
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4 d-flex align-self-stretch ftco-animate">
+              <div class="media block-6 services py-4 d-block text-center">
+                <div class="d-flex justify-content-center"><div class="icon"><span class="flaticon-purse"></span></div></div>
+                <div class="media-body p-2 mt-2">
+                  <h3 class="heading mb-3">Energetikai tanúsítvány készítése</h3>
+                  <p>
+                    Energetikai tanúsítványra lakása eladásakor vagy egy éven túli bérbeadásakor biztosan szüksége lesz! A sorszámát fel kell tüntetni az adásvételi szerződésben is! Rendelje meg kollégáinktól már most!
+                  </p>
+                  <p>
+                    <a href="">BŐVEBBEN...</a>
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+
+
+      <section class="ftco-section ftco-properties">
+          <div class="container">
+              <div class="row justify-content-center mb-5 pb-3">
+                <div class="col-md-7 heading-section text-center ftco-animate">
+                  <!-- <span class="subheading">Recent Posts</span> -->
+                  <h2 class="mb-4">Legfrissebb</h2>
+                </div>
+              </div>
+
+              <div class="row">
+                  <div class="col-md-12">
+                      <div class="properties-slider owl-carousel ftco-animate">
+                      {% if listings %}
+                        {% for listing in listings %}
+                          <div class="item">
+                              <div class="properties">
+                                  <a href="{% url 'listing' listing.slug %}"
+                                      class="img d-flex justify-content-center align-items-center"
+                                      style="background-image: url('{{ listing.photo_main.url }}');">
+                                      <div class="icon d-flex justify-content-center align-items-center">
+                                          <span class="icon-search2"></span>
+                                      </div>
+                                  </a>
+                                  <div class="text p-3">
+                                      <div class="d-flex">
+                                          <span class="status sale">
+                                            {{ listing.cat }}
+                                          </span>
+                                          <div class="one">
+                                              <h3>
+                                                <a href="{% url 'listing' listing.slug %}">
+                                                  {{ listing.title }}
+                                                </a>
+                                              </h3>
+                                              <h3>
+                                                <span class="price">
+                                                  <!--Irányár: {{ listing.price | intword | intcomma }}-->
+                                                  Irányár: {{ listing.price | intcomma }} Ft
+                                                </span>
+                                              </h3>
+                                          </div>
+                                          <div class="two">
+                                            <span>{{ listing.category }}</span>
+                                            <span>{{ listing.town }}</span>
+                                          </div>
+                                      </div>
+                                  </div>
+                              </div>
+                          </div>
+                        {% endfor %}
+                      {% else %}
+                          <div class="col-md-12">
+                            <h1>No Recent Listings added</h1>
+                          </div>
+                      {% endif %}
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </section>
+
+      <!--<section class="ftco-section bg-light">-->
+      <section class="ftco-section" style="background-color: #d1b28c;">
+          <div class="container">
+            <div class="row justify-content-center mb-5 pb-3">
+              <div class="col-md-7 heading-section text-center ftco-animate">
+                <!--<span class="subheading">Special Offers</span>-->
+                <h2 class="mb-4">Kiemelt ajánlatok</h2>
+              </div>
+            </div>
+          </div>
+          <div class="container-fluid">
+              <div class="row">
+                {% if mvp_listings %}
+                  {% for listing in mvp_listings|slice:":4" %}
+                  <div class="col-sm col-md-6 col-lg ftco-animate">
+                      <div class="properties">
+                          <a href="{% url 'listing' listing.slug %}" class="img img-2 d-flex justify-content-center align-items-center" style="background-image: url('{{ listing.photo_main.url }}');">
+                              <div class="icon d-flex justify-content-center align-items-center">
+                                  <span class="icon-search2"></span>
+                              </div>
+                          </a>
+                          <div class="text p-3">
+                              <div class="d-flex">
+                                          <span class="status sale">
+                                            {{ listing.cat }}
+                                          </span>
+                                          <div class="one">
+                                              <h3>
+                                                <a href="{% url 'listing' listing.slug %}">
+                                                  {{ listing.title }}
+                                                </a>
+                                              </h3>
+                                              <h3>
+                                                <span class="price">
+                                                  <!--Irányár: {{ listing.price | intword | intcomma }}-->
+                                                  Irányár: {{ listing.price | intcomma }} Ft
+                                                </span>
+                                              </h3>
+                                          </div>
+                                          <div class="two">
+                                            <span>{{ listing.category }}</span>
+                                            <span>{{ listing.town }}</span>
+                                          </div>
+                              </div>
+                              <hr>
+                              <p class="bottom-area d-flex">
+                                  <span>
+                                    <i class="flaticon-selection"></i>
+                                    {{ listing.sqft }} sqft
+                                  </span>
+                                  <span class="ml-auto">
+                                    <i class="flaticon-bathtub"></i>
+                                    {{ listing.bathrooms }}
+                                  </span>
+                                  <span>
+                                    <i class="flaticon-bed"></i>
+                                    {{ listing.bedrooms }}
+                                  </span>
+                              </p>
+                          </div>
+                      </div>
+                  </div>
+                  {% endfor %}
+                {% endif %}
+              </div>
+          </div>
+      </section>
+
+      <section class="ftco-section ftco-counter img"
+                  id="section-counter"
+                  style="background-image: url('static/images/pano3.jpg');">
+          <div class="container">
+              <div class="row justify-content-center mb-3 pb-3">
+                <div class="col-md-7 text-center heading-section heading-section-white ftco-animate">
+                  <h2 class="mb-4">Some fun facts</h2>
+                </div>
+              </div>
+              <div class="row justify-content-center">
+                  <div class="col-md-10">
+                    <div class="row">
+                        <div class="col-md-3 d-flex justify-content-center counter-wrap ftco-animate">
+                          <div class="block-18 text-center">
+                            <div class="text">
+                              <strong class="number" data-number="9000">0</strong>
+                              <span>Happy Customers</span>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-md-3 d-flex justify-content-center counter-wrap ftco-animate">
+                          <div class="block-18 text-center">
+                            <div class="text">
+                              <strong class="number" data-number="10000">0</strong>
+                              <span>Properties</span>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-md-3 d-flex justify-content-center counter-wrap ftco-animate">
+                          <div class="block-18 text-center">
+                            <div class="text">
+                              <strong class="number" data-number="1000">0</strong>
+                              <span>Agents</span>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-md-3 d-flex justify-content-center counter-wrap ftco-animate">
+                          <div class="block-18 text-center">
+                            <div class="text">
+                              <strong class="number" data-number="100">0</strong>
+                              <span>Awards</span>
+                            </div>
+                          </div>
+                        </div>
+                    </div>
+                  </div>
+              </div>
+          </div>
+      </section>
+
+
+      <section class="ftco-section testimony-section bg-light">
+        <div class="container">
+          <div class="row justify-content-center">
+            <div class="col-md-8 ftco-animate">
+                <div class="row ftco-animate">
+                    <div class="col-md-12">
+                      <div class="carousel-testimony owl-carousel ftco-owl">
+                        <div class="item">
+                          <div class="testimony-wrap py-4 pb-5">
+                            <div class="user-img mb-4"
+                                  style="background-image: url('static/images/person_3.jpg')">
+                              <span class="quote d-flex align-items-center justify-content-center">
+                                <i class="icon-quote-left"></i>
+                              </span>
+                            </div>
+                            <div class="text text-center">
+                              <p class="mb-4">A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paradisematic country, in which roasted parts of sentences fly into your mouth.</p>
+                              <p class="name">Roger Scott</p>
+                              <span class="position">Clients</span>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="item">
+                          <div class="testimony-wrap py-4 pb-5">
+                            <div class="user-img mb-4" style="background-image: url('static/images/person_3.jpg')">
+                              <span class="quote d-flex align-items-center justify-content-center">
+                                <i class="icon-quote-left"></i>
+                              </span>
+                            </div>
+                            <div class="text text-center">
+                              <p class="mb-4">A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paradisematic country, in which roasted parts of sentences fly into your mouth.</p>
+                              <p class="name">Roger Scott</p>
+                              <span class="position">Agent</span>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="item">
+                          <div class="testimony-wrap py-4 pb-5">
+                            <div class="user-img mb-4" style="background-image: url('static/images/person_3.jpg')">
+                              <span class="quote d-flex align-items-center justify-content-center">
+                                <i class="icon-quote-left"></i>
+                              </span>
+                            </div>
+                            <div class="text text-center">
+                              <p class="mb-4">A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paradisematic country, in which roasted parts of sentences fly into your mouth.</p>
+                              <p class="name">Roger Scott</p>
+                              <span class="position">Client</span>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="item">
+                          <div class="testimony-wrap py-4 pb-5">
+                            <div class="user-img mb-4" style="background-image: url('static/images/person_3.jpg')">
+                              <span class="quote d-flex align-items-center justify-content-center">
+                                <i class="icon-quote-left"></i>
+                              </span>
+                            </div>
+                            <div class="text text-center">
+                              <p class="mb-4">A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paradisematic country, in which roasted parts of sentences fly into your mouth.</p>
+                              <p class="name">Roger Scott</p>
+                              <span class="position">Client</span>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="item">
+                          <div class="testimony-wrap py-4 pb-5">
+                            <div class="user-img mb-4" style="background-image: url('static/images/person_3.jpg')">
+                              <span class="quote d-flex align-items-center justify-content-center">
+                                <i class="icon-quote-left"></i>
+                              </span>
+                            </div>
+                            <div class="text text-center">
+                              <p class="mb-4">A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paradisematic country, in which roasted parts of sentences fly into your mouth.</p>
+                              <p class="name">Roger Scott</p>
+                              <span class="position">Client</span>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+
+
+      <!--<section class="ftco-section">-->
+      <section class="ftco-section" style="background-color: #d1b28c;">
+        <div class="container">
+          <div class="row justify-content-center mb-5 pb-3">
+            <div class="col-md-7 heading-section text-center ftco-animate">
+              <!--<span class="subheading">Read Articles</span>-->
+              <h2>Blog</h2>
+            </div>
+          </div>
+          <div class="row d-flex">
+            <div class="col-md-3 d-flex ftco-animate">
+              <div class="blog-entry align-self-stretch">
+                <a href="blog-single.html" class="block-20"
+                                  style="background-image: url('static/images/image_1.jpg');">
+                </a>
+                <div class="text mt-3 d-block">
+                  <h3 class="heading mt-3">
+                    <a href="#">
+                      TÉNYLEG FELROBBANTAK A LAKÁSÁRAK MAGYARORSZÁGON?
+                    </a>
+                  </h3>
+                  <div class="meta mb-3">
+                    <div><a href="#">Dec 6, 2018</a></div>
+                    <div><a href="#">Admin</a></div>
+                    <div><a href="#" class="meta-chat"><span class="icon-chat"></span> 3</a></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-3 d-flex ftco-animate">
+              <div class="blog-entry align-self-stretch">
+                <a href="blog-single.html" class="block-20" style="background-image: url('static/images/image_2.jpg');">
+                </a>
+                <div class="text mt-3">
+                  <h3 class="heading mt-3">
+                    <a href="#">
+                      ISMÉT MEGHIRDETIK A LAKOSSÁGI ENERGETIKAI PÁLYÁZATOKAT
+                    </a>
+                  </h3>
+                  <div class="meta mb-3">
+                    <div><a href="#">Dec 6, 2018</a></div>
+                    <div><a href="#">Admin</a></div>
+                    <div><a href="#" class="meta-chat"><span class="icon-chat"></span> 3</a></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-3 d-flex ftco-animate">
+              <div class="blog-entry align-self-stretch">
+                <a href="blog-single.html" class="block-20" style="background-image: url('static/images/image_1.jpg');">
+                </a>
+                <div class="text mt-3">
+                  <h3 class="heading mt-3">
+                    <a href="#">
+                      TÉNYLEG FELROBBANTAK A LAKÁSÁRAK MAGYARORSZÁGON?
+                    </a>
+                  </h3>
+                  <div class="meta mb-3">
+                    <div><a href="#">Dec 6, 2018</a></div>
+                    <div><a href="#">Admin</a></div>
+                    <div><a href="#" class="meta-chat"><span class="icon-chat"></span> 3</a></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-3 d-flex ftco-animate">
+              <div class="blog-entry align-self-stretch">
+                <a href="blog-single.html" class="block-20" style="background-image: url('static/images/image_4.jpg');">
+                </a>
+                <div class="text mt-3">
+                  <h3 class="heading mt-3">
+                    <a href="#">
+                      ISMÉT MEGHIRDETIK A LAKOSSÁGI ENERGETIKAI PÁLYÁZATOKAT
+                    </a>
+                  </h3>
+                  <div class="meta mb-3">
+                    <div><a href="#">Dec 6, 2018</a></div>
+                    <div><a href="#">Admin</a></div>
+                    <div><a href="#" class="meta-chat"><span class="icon-chat"></span> 3</a></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="ftco-section-parallax">
+        <div class="parallax-img d-flex align-items-center">
+          <div class="container">
+            <div class="row d-flex justify-content-center">
+              <div class="col-md-7 text-center heading-section heading-section-white ftco-animate">
+                <h2>Subcribe to our Newsletter</h2>
+                <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in</p>
+                <div class="row d-flex justify-content-center mt-5">
+                  <div class="col-md-8">
+                    <form action="#" class="subscribe-form">
+                      <div class="form-group d-flex">
+                        <input type="text" class="form-control" placeholder="Enter email address">
+                        <input type="submit" value="Subscribe" class="submit px-3">
+                      </div>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+{% endblock %}

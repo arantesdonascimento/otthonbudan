@@ -1,0 +1,18 @@
+# Virtuális környezet
+venv/
+.venv/
+env/
+
+# Django specifikus fájlok
+db.sqlite3
+*.log
+local_settings.py
+
+# Python gyorsítótárak
+__pycache__/
+*.pyc
+
+# IDE és rendszerfájlok
+.vscode/
+.idea/
+
