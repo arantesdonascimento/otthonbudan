@@ -1,17 +1,5 @@
-venv:
-otthonbudan
----------------------------------
-su:
 admin
-passwordd
----------------------------------
-users:
-
-1.
 johnrambo
-passwordd
-
-2.
 
 
 
